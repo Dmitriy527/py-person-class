@@ -10,14 +10,12 @@ class Person:
 def create_person_list(people: list) -> list:
     our_list = []
     for human in people:
-        people = Person(human["name"], human["age"])
-        if "husband" in human:
-            if human["husband"] is not None:
-                people.husband = human["husband"]
-        if "wife" in human:
-            if human["wife"] is not None:
-                people.wife = human["wife"]
-        our_list.append(people)
+        person = Person(human["name"], human["age"])
+        if human.get("husband"):
+            person.husband = human["husband"]
+        if human.get("wife"):
+            person.wife = human["wife"]
+        our_list.append(person)
 
     for item in our_list:
         if hasattr(item, "wife"):
